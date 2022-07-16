@@ -25,6 +25,7 @@ import images from '~/assets/images';
 import { Wrapper as PopperWrapper } from '~/components/Popper';
 import AccountsItem from '~/components/AccountsItem';
 import Menu from '~/components/Popper/Menu';
+import Image from '~/components/Image';
 const cx = classNames.bind(styles);
 
 const MENU_ITEMS = [
@@ -158,9 +159,9 @@ function Header() {
 
                     {currentUser ? (
                         <Menu items={MENU_USER}>
-                            <img
+                            <Image
                                 className={cx('user-avatar')}
-                                src="https://i.pinimg.com/564x/be/72/16/be721624faf69ef9d84906e4d28af410.jpg"
+                                src="https://i.pinimg.cozm/564x/be/72/16/be721624faf69ef9d84906e4d28af410.jpg"
                                 alt="Hau"
                             />
                         </Menu>
