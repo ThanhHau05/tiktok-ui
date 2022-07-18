@@ -14,38 +14,42 @@ const cx = classNames.bind(styles);
 
 function MailBox({ items = [] }) {
     const [visible, setVisible] = useState(false);
+    const [currentTag, setCurrentTag] = useState('');
+
     const show = () => setVisible(true);
     const hide = () => setVisible(false);
+
+    const _onClick = (value) => {
+        setCurrentTag(value);
+    };
+
     const renderItems = () => {
         return items.map((item, index) => (
             <button key={index} className={cx('mailbox-btn')}>
-                <MenuItem key={index} data={item} />
+                <MenuItem key={index} isHighlight={currentTag === item.title} data={item} onClick={_onClick} />
             </button>
         ));
     };
+
+    const _rendenTippy = (attrs) => (
+        <div className={cx('wrapper')} tabIndex="-1" {...attrs}>
+            <img className={cx('separate-tippy')} src={images.muiten} alt="" />
+            <PopperWrapper>
+                <Header title="Thông báo" children={renderItems()} />
+                <div className={cx('mailbox-list')}></div>
+            </PopperWrapper>
+        </div>
+    );
+
     return (
-        <HeadlessTippy
-            interactive
-            placement="bottom-end"
-            visible={visible}
-            offset={[67, 8]}
-            render={(attrs) => (
-                <div className={cx('wrapper')} tabIndex="-1" {...attrs}>
-                    <img className={cx('separate-tippy')} src={images.muiten} alt="" />
-                    <PopperWrapper>
-                        <Header title="Thông báo" children={renderItems()} />
-                        <div className={cx('mailbox-list')}></div>
-                    </PopperWrapper>
-                </div>
-            )}
-        >
+        <HeadlessTippy interactive placement="bottom-end" visible={visible} offset={[67, 8]} render={_rendenTippy}>
             {visible ? (
-                <button className={cx('actions-btn')} onClick={visible ? hide : show}>
+                <button className={cx('actions-btn')} onClick={hide}>
                     <FontAwesomeIcon icon={faEnvelopeOpen} />
                 </button>
             ) : (
                 <Tippy offset={[0, 16]} content="Hộp thư" placement="bottom">
-                    <button className={cx('actions-btn')} onClick={visible ? hide : show}>
+                    <button className={cx('actions-btn')} onClick={show}>
                         <FontAwesomeIcon icon={faEnvelope} />
                     </button>
                 </Tippy>
