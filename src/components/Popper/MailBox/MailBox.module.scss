@@ -1,0 +1,76 @@
+.separate-tippy {
+    display: block;
+    width: 25px;
+    height: 7px;
+    top: -8px;
+    margin-left: 74%;
+}
+
+.wrapper {
+    width: 376px;
+    height: 640px;
+}
+
+.actions-btn {
+    background-color: transparent;
+    font-size: 26px;
+    padding: 3px 6px 0 3px;
+    margin-left: 16px;
+    cursor: pointer;
+}
+
+
+.header {
+    position: relative;
+    height: 50px;
+    margin-top: -8px;
+}
+
+.header-title {
+    font-size: 24px;
+    font-weight: 700;
+    position: absolute;
+    top: -50%;
+    left: 70px;
+    transform: translateX(-50%);
+    line-height: 28px;
+}
+
+.mailbox-bar {
+    //font-weight: 600;
+    display:  flex;
+    //flex-flow: row wrap;
+    //font-size: 14px;
+    margin-top: 10%;
+}
+
+.header-mailbox-bar {
+    margin-top: 10px;
+}
+
+.mailbox-list {
+    height: 500px;
+}
+
+.mailbox-btn {
+    margin-top: 16px;
+    font-weight: 600;
+    font-size: 14px;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.mailbox-noti {
+    background: rgb(241, 241, 241);
+    margin-left: 8px;
+    margin-bottom: 12px;
+    padding: 4px 8px;
+    border-radius: 12px;
+}
+
+.noti {
+    background: rgb(22, 24, 35);
+    color: #fff;
+}
+
+

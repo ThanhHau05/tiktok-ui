@@ -16,8 +16,9 @@ import {
     /*faSpinner,*/ faMagnifyingGlass,
     faPlus,
     faUser,
+    faAt,
 } from '@fortawesome/free-solid-svg-icons';
-import { faCommentDots, faEnvelope } from '@fortawesome/free-regular-svg-icons';
+import { faCommentDots, faEnvelope, faHeart, faUser as faUser_Regular } from '@fortawesome/free-regular-svg-icons';
 
 import Button from '~/components/Button';
 import styles from './Header.module.scss';
@@ -25,8 +26,42 @@ import images from '~/assets/images';
 import { Wrapper as PopperWrapper } from '~/components/Popper';
 import AccountsItem from '~/components/AccountsItem';
 import Menu from '~/components/Popper/Menu';
+import MailBox from '~/components/Popper/MailBox';
 import Image from '~/components/Image';
 const cx = classNames.bind(styles);
+
+const MENU_NOTIFICATION = [
+    {
+        title: 'Tất cả',
+        icon: <FontAwesomeIcon icon={faEnvelope} />,
+        text_1: 'Tất cả hoạt động',
+        text_2: 'Các thông báo về tài khoản của bạn sẽ xuất hiện tại đây.',
+    },
+    {
+        title: 'Thích',
+        icon: <FontAwesomeIcon icon={faHeart} />,
+        text_1: 'Lượt thích trên video của bạn',
+        text_2: 'Khi ai đó thích một trong các video của bạn, bạn sẽ nhìn thấy ở đây',
+    },
+    {
+        title: 'Bình luận',
+        icon: <FontAwesomeIcon icon={faCommentDots} />,
+        text_1: 'Bình luận trên video của bạn',
+        text_2: 'Khi ai đó bình luận về một trong các video của bạn, bạn sẽ nhìn thấy ở đây',
+    },
+    {
+        title: 'Nhắc đến',
+        icon: <FontAwesomeIcon icon={faAt} />,
+        text_1: 'Nhắc đến bạn',
+        text_2: 'Khi ai đó nhắc đến bạn, bạn sẽ nhìn thấy ở đây',
+    },
+    {
+        title: 'Follower',
+        icon: <FontAwesomeIcon icon={faUser_Regular} />,
+        text_1: 'Những Follower mới',
+        text_2: 'Khi có người mới Follow bạn, bạn sẽ nhìn thấy ở đây',
+    },
+];
 
 const MENU_ITEMS = [
     {
@@ -137,16 +172,13 @@ function Header() {
                             <Button upload lefticon={<FontAwesomeIcon icon={faPlus} />}>
                                 Tải lên
                             </Button>
-                            <Tippy content="Tin nhắn" placement="bottom">
+                            <Tippy offset={[0, 16]} content="Tin nhắn" placement="bottom">
                                 <button className={cx('actions-btn')}>
                                     <FontAwesomeIcon icon={faCommentDots} />
                                 </button>
                             </Tippy>
-                            <Tippy content="Hộp thư" placement="bottom">
-                                <button className={cx('actions-btn')}>
-                                    <FontAwesomeIcon icon={faEnvelope} />
-                                </button>
-                            </Tippy>
+
+                            <MailBox items={MENU_NOTIFICATION} />
                         </>
                     ) : (
                         <>
@@ -161,7 +193,7 @@ function Header() {
                         <Menu items={MENU_USER}>
                             <Image
                                 className={cx('user-avatar')}
-                                src="https://i.pinimg.cozm/564x/be/72/16/be721624faf69ef9d84906e4d28af410.jpg"
+                                src="https://i.pinimg.com/564x/be/72/16/be721624faf69ef9d84906e4d28af410.jpg"
                                 alt="Hau"
                             />
                         </Menu>
