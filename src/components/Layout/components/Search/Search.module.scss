@@ -1,0 +1,68 @@
+.search,
+.search-result {
+    width: 361px;
+}
+
+.search-lebel {
+    font-size: 14px;
+    color: rgba(22, 24, 35, 0.5);
+    padding: 5px 12px;
+}
+
+.search {
+    position: relative;
+    height: 46px;
+    padding-left: 16px;
+    display: flex;
+    background: rgba(22, 24, 35, 0.06);
+    border-radius: 92px;
+    border: 1.5px solid transparent;
+    input {
+        flex: 1;
+        height: 100%;
+        font-size: 1.6rem;
+        color: black;
+        caret-color: rgb(254, 44, 85);
+        background-color: transparent;
+    }
+
+    input:not(:placeholder-shown) ~ .search-btn {
+        color: rgba(22, 24, 35, 0.75);
+    }
+    &:focus-within {
+        border-color: #c5c6c9;
+    }
+}
+
+.clear-btn,
+.loading-icon {
+    color: rgba(22, 24, 35, 0.34);
+    position: absolute;
+    right: 52px;
+    top: 50%;
+    transform: translateY(-50%);
+    margin: 0 12px;
+}
+
+.duong-gach-thang {
+    width: 1px;
+    height: 28px;
+    margin: 9px 0;
+    background: rgba(22, 24, 35, 0.12);
+    align-items: center;
+}
+
+.search-btn {
+    cursor: pointer;
+    width: 52px;
+    font-size: 1.7rem;
+    color: rgba(22, 24, 35, 0.34);
+    border-radius: 0 92px 92px 0;
+
+    &:hover {
+        background-color: #eaeaeb;
+    }
+    &:active {
+        background: rgba(22, 24, 35, 0.06);
+    }
+}
