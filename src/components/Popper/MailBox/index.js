@@ -16,10 +16,17 @@ function MailBox({ items = [] }) {
     const [visible, setVisible] = useState(false);
     const show = () => setVisible(true);
     const hide = () => setVisible(false);
+
+    const [currentTag, setCurrentTag] = useState('');
+
+    const _onClick = (value) => {
+        setCurrentTag(value);
+    };
+
     const renderItems = () => {
         return items.map((item, index) => (
             <button key={index} className={cx('mailbox-btn')}>
-                <MenuItem key={index} data={item} />
+                <MenuItem key={index} isHighlight={currentTag === item.title} data={item} onClick={_onClick} />
             </button>
         ));
     };
