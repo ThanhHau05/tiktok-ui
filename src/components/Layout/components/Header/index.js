@@ -1,6 +1,8 @@
 import classNames from 'classnames/bind';
 import Tippy from '@tippyjs/react';
+import routesConfig from '~/config/routes';
 import 'tippy.js/dist/tippy.css';
+import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
     faArrowRightFromBracket,
@@ -124,7 +126,9 @@ function Header() {
         <header className={cx('wrapper')}>
             <div className={cx('inner')}>
                 <div className={cx('logo')}>
-                    <img src={images.logo} alt="TikTok" />
+                    <Link to={routesConfig.home} className={cx('logo-link')}>
+                        <img src={images.logo} alt="TikTok" />
+                    </Link>
                 </div>
                 <Search />
                 <div className={cx('actions')}>

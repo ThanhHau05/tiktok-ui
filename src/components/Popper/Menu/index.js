@@ -8,7 +8,7 @@ import { useState } from 'react';
 import images from '~/assets/images';
 const cx = classNames.bind(styles);
 
-function Menu({ children, items = [], onChange }) {
+function Menu({ children, items = [], hideOnClick = false, onChange }) {
     const [history, SetHistory] = useState([{ data: items }]);
     const current = history[history.length - 1];
     const renderItems = () => {
@@ -33,6 +33,7 @@ function Menu({ children, items = [], onChange }) {
     };
     return (
         <Tippy
+            hideOnClick={hideOnClick}
             interactive
             placement="bottom-end"
             delay={[0, 600]}

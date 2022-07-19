@@ -38,6 +38,14 @@ function Search() {
     const handleHideResult = () => {
         setShowResult(false);
     };
+
+    const hanleCheckSpace = (e) => {
+        const count = e.target.value;
+        if (!count.startsWith(' ')) {
+            setSeachText(count);
+        }
+    };
+
     return (
         <HeadlessTippy
             interactive
@@ -60,13 +68,7 @@ function Search() {
                     value={searchtext}
                     placeholder="Tìm kiếm tài khoản và video"
                     spellCheck={false}
-                    onChange={(e) => {
-                        if (e.target.value === ' ') {
-                            return;
-                        } else {
-                            setSeachText(e.target.value);
-                        }
-                    }}
+                    onChange={hanleCheckSpace}
                     onFocus={() => setShowResult(true)}
                 />
                 {!!searchtext && !loading && (
@@ -83,7 +85,7 @@ function Search() {
                 )}
                 {loading && <FontAwesomeIcon className={cx('loading-icon')} icon={faSpinner} />}
                 <span className={cx('duong-gach-thang')}></span>
-                <button className={cx('search-btn')}>
+                <button className={cx('search-btn')} onMouseDown={(e) => e.preventDefault()}>
                     <FontAwesomeIcon icon={faMagnifyingGlass} />
                 </button>
             </div>
