@@ -12,14 +12,26 @@ function Search() {
     const [searchResult, setSearchResult] = useState([]);
     const [searchtext, setSeachText] = useState('');
     const [showResult, setShowResult] = useState(true);
+    const [loading, setLoading] = useState(false);
 
     const inputref = useRef();
 
     useEffect(() => {
-        setTimeout(() => {
-            setSearchResult([1, 1, 1, 1, 1]);
-        });
-    }, []);
+        if (!searchtext.trim()) {
+            setSearchResult([]);
+            return;
+        }
+        setLoading(true);
+        fetch(`https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(searchtext)}&type=less`)
+            .then((res) => res.json())
+            .then((res) => {
+                setSearchResult(res.data);
+                setLoading(false);
+            })
+            .catch(() => {
+                setLoading(false);
+            });
+    }, [searchtext]);
 
     const handleHideResult = () => {
         setShowResult(false);
@@ -32,10 +44,9 @@ function Search() {
                 <div className={cx('search-result')} tabIndex="-1" {...attrs}>
                     <PopperWrapper>
                         <h4 className={cx('search-lebel')}>Tài khoản</h4>
-                        <AccountsItem />
-                        <AccountsItem />
-                        <AccountsItem />
-                        <AccountsItem />
+                        {searchResult.map((result) => (
+                            <AccountsItem key={result.id} data={result} />
+                        ))}
                     </PopperWrapper>
                 </div>
             )}
@@ -47,10 +58,16 @@ function Search() {
                     value={searchtext}
                     placeholder="Tìm kiếm tài khoản và video"
                     spellCheck={false}
-                    onChange={(e) => setSeachText(e.target.value)}
+                    onChange={(e) => {
+                        if (e.target.value === ' ') {
+                            return;
+                        } else {
+                            setSeachText(e.target.value);
+                        }
+                    }}
                     onFocus={() => setShowResult(true)}
                 />
-                {!!searchtext && (
+                {!!searchtext && !loading && (
                     <button
                         className={cx('clear-btn')}
                         onClick={() => {
@@ -62,7 +79,7 @@ function Search() {
                         <FontAwesomeIcon icon={faCircleXmark} />
                     </button>
                 )}
-                {/* <FontAwesomeIcon className={cx('loading-icon')} icon={faSpinner} /> */}
+                {loading && <FontAwesomeIcon className={cx('loading-icon')} icon={faSpinner} />}
                 <span className={cx('duong-gach-thang')}></span>
                 <button className={cx('search-btn')}>
                     <FontAwesomeIcon icon={faMagnifyingGlass} />

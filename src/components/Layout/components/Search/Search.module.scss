@@ -44,6 +44,19 @@
     margin: 0 12px;
 }
 
+.loading-icon {
+    animation: spinner 0.8s linear infinite;
+}
+
+@keyframes spinner {
+    from {
+        transform: translateY(-50%) rotate(0);
+    }
+    to {
+        transform: translateY(-50%) rotate(360deg);
+    }
+}
+
 .duong-gach-thang {
     width: 1px;
     height: 28px;
