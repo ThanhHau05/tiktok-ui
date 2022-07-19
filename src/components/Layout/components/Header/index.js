@@ -17,7 +17,6 @@ import {
     faAt,
 } from '@fortawesome/free-solid-svg-icons';
 import { faCommentDots, faEnvelope, faHeart, faUser as faUser_Regular } from '@fortawesome/free-regular-svg-icons';
-
 import Button from '~/components/Button';
 import styles from './Header.module.scss';
 import images from '~/assets/images';

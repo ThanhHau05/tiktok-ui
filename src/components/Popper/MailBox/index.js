@@ -37,28 +37,39 @@ function MailBox({ items = [] }) {
         ));
     };
     const _rendenTippy = (attrs) => (
-        <div className={cx('wrapper')} tabIndex="-1" {...attrs}>
-            <img className={cx('separate-tippy')} src={images.muiten} alt="" />
-            <PopperWrapper>
-                <Header title="Thông báo" children={renderItems()} />
-                {renderIcon()}
-            </PopperWrapper>
+        <div>
+            <div className={cx('wrapper')} tabIndex="-1" {...attrs}>
+                <img className={cx('separate-tippy')} src={images.muiten} alt="" />
+                <PopperWrapper>
+                    <Header title="Thông báo" children={renderItems()} />
+                    {renderIcon()}
+                </PopperWrapper>
+            </div>
         </div>
     );
     return (
-        <HeadlessTippy interactive placement="bottom-end" visible={visible} offset={[67, 8]} render={_rendenTippy}>
-            {visible ? (
-                <button className={cx('actions-btn')} onClick={hide}>
-                    <FontAwesomeIcon icon={faEnvelopeOpen} />
-                </button>
-            ) : (
-                <Tippy offset={[0, 16]} content="Hộp thư" placement="bottom">
-                    <button className={cx('actions-btn')} onClick={show}>
-                        <FontAwesomeIcon icon={faEnvelope} />
+        <div>
+            <HeadlessTippy
+                appendTo={() => document.body}
+                interactive
+                placement="bottom-end"
+                visible={visible}
+                offset={[67, 8]}
+                render={_rendenTippy}
+            >
+                {visible ? (
+                    <button className={cx('actions-btn')} onClick={hide}>
+                        <FontAwesomeIcon icon={faEnvelopeOpen} />
                     </button>
-                </Tippy>
-            )}
-        </HeadlessTippy>
+                ) : (
+                    <Tippy offset={[0, 16]} content="Hộp thư" placement="bottom">
+                        <button className={cx('actions-btn')} onClick={show}>
+                            <FontAwesomeIcon icon={faEnvelope} />
+                        </button>
+                    </Tippy>
+                )}
+            </HeadlessTippy>
+        </div>
     );
 }
 

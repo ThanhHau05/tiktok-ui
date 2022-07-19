@@ -18,6 +18,10 @@
     padding-bottom: 8px;
 }
 
+.menu-body {
+    overflow-y: auto;
+}
+
 .menu-item {
     width: 100%;
     display: flex;
@@ -29,7 +33,7 @@
     }
 
     &:hover {
-    background: rgba(22, 24, 35, 0.03);
+        background: rgba(22, 24, 35, 0.03);
     }
 }
 
@@ -38,6 +42,7 @@
     position: relative;
     height: 50px;
     margin-top: -8px;
+    flex-shrink: 0;
 }
 
 .back-btn {

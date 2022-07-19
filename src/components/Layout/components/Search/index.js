@@ -47,49 +47,52 @@ function Search() {
     };
 
     return (
-        <HeadlessTippy
-            interactive
-            visible={showResult && searchResult.length > 0}
-            render={(attrs) => (
-                <div className={cx('search-result')} tabIndex="-1" {...attrs}>
-                    <PopperWrapper>
-                        <h4 className={cx('search-lebel')}>Tài khoản</h4>
-                        {searchResult.map((result) => (
-                            <AccountsItem key={result.id} data={result} />
-                        ))}
-                    </PopperWrapper>
-                </div>
-            )}
-            onClickOutside={handleHideResult}
-        >
-            <div className={cx('search')}>
-                <input
-                    ref={inputref}
-                    value={searchtext}
-                    placeholder="Tìm kiếm tài khoản và video"
-                    spellCheck={false}
-                    onChange={hanleCheckSpace}
-                    onFocus={() => setShowResult(true)}
-                />
-                {!!searchtext && !loading && (
-                    <button
-                        className={cx('clear-btn')}
-                        onClick={() => {
-                            setSeachText('');
-                            setSearchResult([]);
-                            inputref.current.focus();
-                        }}
-                    >
-                        <FontAwesomeIcon icon={faCircleXmark} />
-                    </button>
+        <div>
+            <HeadlessTippy
+                interactive
+                appendTo={() => document.body}
+                visible={showResult && searchResult.length > 0}
+                render={(attrs) => (
+                    <div className={cx('search-result')} tabIndex="-1" {...attrs}>
+                        <PopperWrapper>
+                            <h4 className={cx('search-lebel')}>Tài khoản</h4>
+                            {searchResult.map((result) => (
+                                <AccountsItem key={result.id} data={result} />
+                            ))}
+                        </PopperWrapper>
+                    </div>
                 )}
-                {loading && <FontAwesomeIcon className={cx('loading-icon')} icon={faSpinner} />}
-                <span className={cx('duong-gach-thang')}></span>
-                <button className={cx('search-btn')} onMouseDown={(e) => e.preventDefault()}>
-                    <FontAwesomeIcon icon={faMagnifyingGlass} />
-                </button>
-            </div>
-        </HeadlessTippy>
+                onClickOutside={handleHideResult}
+            >
+                <div className={cx('search')}>
+                    <input
+                        ref={inputref}
+                        value={searchtext}
+                        placeholder="Tìm kiếm tài khoản và video"
+                        spellCheck={false}
+                        onChange={hanleCheckSpace}
+                        onFocus={() => setShowResult(true)}
+                    />
+                    {!!searchtext && !loading && (
+                        <button
+                            className={cx('clear-btn')}
+                            onClick={() => {
+                                setSeachText('');
+                                setSearchResult([]);
+                                inputref.current.focus();
+                            }}
+                        >
+                            <FontAwesomeIcon icon={faCircleXmark} />
+                        </button>
+                    )}
+                    {loading && <FontAwesomeIcon className={cx('loading-icon')} icon={faSpinner} />}
+                    <span className={cx('duong-gach-thang')}></span>
+                    <button className={cx('search-btn')} onMouseDown={(e) => e.preventDefault()}>
+                        <FontAwesomeIcon icon={faMagnifyingGlass} />
+                    </button>
+                </div>
+            </HeadlessTippy>
+        </div>
     );
 }
 

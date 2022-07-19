@@ -15,17 +15,51 @@
 }
 
 html {
-font-size: 62.5%;
+    font-size: 62.5%;
 }
 
 body {
     font-family: 'proxima-nova', sans-serif;
     font-size: 1.6rem;
-    line-height: 1.5; 
+    line-height: 1.5;
     text-rendering: optimizeSpeed;
+    overflow-y: overlay;
 }
 
-button, input, [tabindex] {
+//Scroallbar css
+html *::-webkit-scrollbar {
+    border-radius: 0;
+    width: 8px;
+}
+
+html *::-webkit-scrollbar {
+    border-radius: 0;
+    width: 8px;
+}
+
+html *::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background-color: rgba(0, 0, 0, 0.15);
+}
+
+html *::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background-color: rgba(0, 0, 0, 0.15);
+}
+
+html *::-webkit-scrollbar-track {
+    border-radius: 0;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+html *::-webkit-scrollbar-track {
+    border-radius: 0;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+button,
+input,
+[tabindex] {
     outline: none;
     border: none;
 }
@@ -35,16 +69,16 @@ a[href] {
 }
 
 body {
-     .tippy-box {
-    padding: 4px 0;
-    background-color: rgba(84, 84, 84, 0.92);
-    font-size: 1.6rem;
-    font-weight: 600;
-    border-radius: 8px;
-    line-height: 2.2rem;
-     }
-     .tippy-arrow {
+    .tippy-box {
+        padding: 4px 0;
+        background-color: rgba(84, 84, 84, 0.92);
+        font-size: 1.6rem;
+        font-weight: 600;
+        border-radius: 8px;
+        line-height: 2.2rem;
+    }
+    .tippy-arrow {
         color: rgba(84, 84, 84, 0.92);
         margin: -1px;
-     }
+    }
 }
