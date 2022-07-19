@@ -3,6 +3,7 @@ import HeadlessTippy from '@tippyjs/react/headless';
 import { faCircleXmark, faSpinner, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Wrapper as PopperWrapper } from '~/components/Popper';
+import { useDebounce } from '~/Hooks';
 import AccountsItem from '~/components/AccountsItem';
 import styles from './Search.module.scss';
 import classNames from 'classnames/bind';
@@ -14,15 +15,17 @@ function Search() {
     const [showResult, setShowResult] = useState(true);
     const [loading, setLoading] = useState(false);
 
+    const debounced = useDebounce(searchtext, 500);
+
     const inputref = useRef();
 
     useEffect(() => {
-        if (!searchtext.trim()) {
+        if (!debounced.trim()) {
             setSearchResult([]);
             return;
         }
         setLoading(true);
-        fetch(`https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(searchtext)}&type=less`)
+        fetch(`https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(debounced)}&type=less`)
             .then((res) => res.json())
             .then((res) => {
                 setSearchResult(res.data);
@@ -31,7 +34,7 @@ function Search() {
             .catch(() => {
                 setLoading(false);
             });
-    }, [searchtext]);
+    }, [debounced]);
 
     const handleHideResult = () => {
         setShowResult(false);
