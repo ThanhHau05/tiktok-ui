@@ -1,6 +1,6 @@
 import classNames from 'classnames/bind';
 import Tippy from '@tippyjs/react';
-import routesConfig from '~/config/routes';
+import Config from '~/config';
 import 'tippy.js/dist/tippy.css';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -23,7 +23,7 @@ import images from '~/assets/images';
 import Menu from '~/components/Popper/Menu';
 import MailBox from '~/components/Popper/MailBox';
 import Image from '~/components/Image';
-import Search from '~/components/Layout/components/Search';
+import Search from '~/Layouts/components/Search';
 const cx = classNames.bind(styles);
 
 const MENU_NOTIFICATION = [
@@ -116,16 +116,12 @@ const MENU_USER = [
 ];
 
 function Header() {
-    //Handle Logic
-    const handleMenuChange = (menuItem) => {
-        console.log(menuItem);
-    };
     const currentUser = true;
     return (
         <header className={cx('wrapper')}>
             <div className={cx('inner')}>
                 <div className={cx('logo')}>
-                    <Link to={routesConfig.home} className={cx('logo-link')}>
+                    <Link to={Config.routes.home} className={cx('logo-link')}>
                         <img src={images.logo} alt="TikTok" />
                     </Link>
                 </div>
@@ -162,7 +158,7 @@ function Header() {
                             />
                         </Menu>
                     ) : (
-                        <Menu items={MENU_ITEMS} onChange={handleMenuChange}>
+                        <Menu items={MENU_ITEMS}>
                             <button className={cx('more-btn')}>
                                 <FontAwesomeIcon icon={faEllipsisVertical} />
                             </button>
