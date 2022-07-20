@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import styles from './MailBox.module.scss';
 import classNames from 'classnames/bind';
 const cx = classNames.bind(styles);
@@ -11,5 +12,9 @@ function MenuItemIcon({ data }) {
         </div>
     );
 }
+
+MenuItemIcon.propTypes = {
+    data: PropTypes.object.isRequired,
+};
 
 export default MenuItemIcon;

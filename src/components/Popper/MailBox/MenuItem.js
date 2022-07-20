@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import styles from './MailBox.module.scss';
 import classNames from 'classnames/bind';
 import { useMemo } from 'react';
@@ -23,5 +24,11 @@ function MenuItem({ data, isHighlight, onClickTitle }) {
         </button>
     );
 }
+
+MenuItem.propTypes = {
+    data: PropTypes.object.isRequired,
+    isHighlight: PropTypes.bool.isRequired,
+    onClickTitle: PropTypes.func.isRequired,
+};
 
 export default MenuItem;

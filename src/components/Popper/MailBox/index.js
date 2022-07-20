@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { useState } from 'react';
 import { Wrapper as PopperWrapper } from '~/components/Popper';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -50,7 +51,7 @@ function MailBox({ items = [] }) {
     return (
         <div>
             <HeadlessTippy
-                appendTo={() => document.body}
+                //appendTo={() => document.body}
                 interactive
                 placement="bottom-end"
                 visible={visible}
@@ -72,5 +73,9 @@ function MailBox({ items = [] }) {
         </div>
     );
 }
+
+MailBox.propTypes = {
+    items: PropTypes.array.isRequired,
+};
 
 export default MailBox;
