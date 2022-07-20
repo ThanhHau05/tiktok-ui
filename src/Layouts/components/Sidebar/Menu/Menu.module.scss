@@ -1,0 +1,27 @@
+.menu-item {
+    display: flex;
+    font-size: 1.8rem;
+    font-weight: 700;
+    text-decoration: none;
+    padding: 8px;
+    border-radius: 4px;
+    color: rgba(22, 24, 35, 1);
+    transition: background-color ease-in-out 200ms;
+    &:hover {
+        background-color: rgba(22, 24, 35, 0.03);
+    }
+}
+
+.active {
+    color: rgba(254, 44, 85, 1);
+}
+
+.icon {
+    color: currentColor;
+    font-size: 20px;
+    margin-right: 12px;
+    background-color: transparent;
+}
+
+.title {
+}
